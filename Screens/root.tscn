@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://beo8vxkkxmvul"]
+
+[ext_resource type="PackedScene" uid="uid://bodugtlsgaf6m" path="res://Screens/home_screen.tscn" id="1_l0h5t"]
+[ext_resource type="PackedScene" uid="uid://uctgsf7xyw1k" path="res://Screens/intro_screen.tscn" id="2_l42sb"]
+[ext_resource type="PackedScene" uid="uid://s18y6p87o802" path="res://Screens/create_hero_screen.tscn" id="3_5xl2i"]
+
+[node name="Root" type="CanvasLayer"]
+
+[node name="HomeScreen" parent="." instance=ExtResource("1_l0h5t")]
+
+[node name="IntroScreen" parent="." instance=ExtResource("2_l42sb")]
+visible = false
+
+[node name="CreateHeroScreen" parent="." instance=ExtResource("3_5xl2i")]
+visible = false

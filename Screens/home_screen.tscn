@@ -1,0 +1,94 @@
+[gd_scene load_steps=8 format=3 uid="uid://bodugtlsgaf6m"]
+
+[ext_resource type="Script" path="res://Screens/BackgroundColorRect.cs" id="1_4cxdl"]
+[ext_resource type="StyleBox" uid="uid://bc7mdr06ykigs" path="res://Buttons/button-hover.tres" id="2_sb0wy"]
+[ext_resource type="StyleBox" uid="uid://cn7uywu15u0f1" path="res://Buttons/button-press.tres" id="3_qwtxo"]
+[ext_resource type="StyleBox" uid="uid://wxvsiuujdugr" path="res://Buttons/button.tres" id="4_8tpa5"]
+[ext_resource type="Script" path="res://Buttons/StartGameButton.cs" id="5_kkq3h"]
+[ext_resource type="Script" path="res://Buttons/ExitGameButton.cs" id="6_is825"]
+
+[sub_resource type="SystemFont" id="SystemFont_x7ifq"]
+font_weight = 600
+font_stretch = 125
+subpixel_positioning = 0
+
+[node name="HomeScreen" type="CanvasLayer"]
+
+[node name="BackgroundColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.325, 0.36875, 0.5, 1)
+script = ExtResource("1_4cxdl")
+
+[node name="WelcomeLabel" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.427
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -444.0
+offset_top = -320.4
+offset_right = 444.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.156863)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 8
+theme_override_constants/shadow_offset_y = 12
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 24
+theme_override_font_sizes/font_size = 328
+text = "PRPG"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="StartGameButton" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -352.0
+offset_top = -432.0
+offset_right = 352.0
+offset_bottom = -304.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = SubResource("SystemFont_x7ifq")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/hover = ExtResource("2_sb0wy")
+theme_override_styles/pressed = ExtResource("3_qwtxo")
+theme_override_styles/normal = ExtResource("4_8tpa5")
+text = "Start New Game"
+script = ExtResource("5_kkq3h")
+
+[node name="ExitGameButton" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -352.0
+offset_top = -240.0
+offset_right = 352.0
+offset_bottom = -112.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = SubResource("SystemFont_x7ifq")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/hover = ExtResource("2_sb0wy")
+theme_override_styles/pressed = ExtResource("3_qwtxo")
+theme_override_styles/normal = ExtResource("4_8tpa5")
+text = "Exit"
+script = ExtResource("6_is825")

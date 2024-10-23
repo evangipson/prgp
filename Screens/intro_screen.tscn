@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=3 uid="uid://uctgsf7xyw1k"]
+
+[ext_resource type="Script" path="res://Screens/BackgroundColorRect.cs" id="1_vjdxl"]
+[ext_resource type="StyleBox" uid="uid://bc7mdr06ykigs" path="res://Buttons/button-hover.tres" id="2_bxdq5"]
+[ext_resource type="StyleBox" uid="uid://cn7uywu15u0f1" path="res://Buttons/button-press.tres" id="3_k7rp1"]
+[ext_resource type="StyleBox" uid="uid://wxvsiuujdugr" path="res://Buttons/button.tres" id="4_euags"]
+[ext_resource type="Script" path="res://Buttons/CreateHeroButton.cs" id="5_grg6y"]
+
+[sub_resource type="SystemFont" id="SystemFont_x7ifq"]
+font_weight = 600
+font_stretch = 125
+subpixel_positioning = 0
+
+[node name="IntroScreen" type="CanvasLayer"]
+
+[node name="IntroBackgroundColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.2134, 0.198, 0.33, 1)
+script = ExtResource("1_vjdxl")
+
+[node name="IntroLabel" type="Label" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 128.0
+offset_top = 94.0
+offset_right = -128.0
+offset_bottom = -304.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 72
+text = "Welcome to PRPG!
+
+You'll be writing code to try and get your heroes the most loot possible from the dungeon.
+
+Let's create your first hero."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="CreateHeroButton" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -352.0
+offset_top = -240.0
+offset_right = 352.0
+offset_bottom = -112.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = SubResource("SystemFont_x7ifq")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/hover = ExtResource("2_bxdq5")
+theme_override_styles/pressed = ExtResource("3_k7rp1")
+theme_override_styles/normal = ExtResource("4_euags")
+text = "Create Hero"
+script = ExtResource("5_grg6y")
