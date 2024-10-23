@@ -1,0 +1,217 @@
+[gd_scene load_steps=25 format=3 uid="uid://dn4xunvbsawf6"]
+
+[ext_resource type="Script" path="res://Screens/BackgroundColorRect.cs" id="1_oh5ay"]
+[ext_resource type="StyleBox" uid="uid://ffwgcevw8oln" path="res://Panel/dungeon-panel.tres" id="2_tfyod"]
+[ext_resource type="Script" path="res://TileMap/DungeonTileMap.cs" id="3_u6vqm"]
+[ext_resource type="FontFile" uid="uid://dybo80dpgdbny" path="res://Font/FiraCode-Medium.ttf" id="4_q1d8l"]
+[ext_resource type="Script" path="res://TabBar/CodeInputTabBar.cs" id="4_rwkhl"]
+[ext_resource type="Script" path="res://Inputs/CodeInput.cs" id="5_b5lbn"]
+[ext_resource type="StyleBox" uid="uid://c2wis35u0l2tr" path="res://Buttons/new-tab-button-hover.tres" id="5_lxs5k"]
+[ext_resource type="StyleBox" uid="uid://do4an8wakvcnr" path="res://Buttons/new-tab-button-press.tres" id="6_lbvix"]
+[ext_resource type="StyleBox" uid="uid://cv43njj3kqk41" path="res://Inputs/normal-input.tres" id="7_c3gui"]
+[ext_resource type="StyleBox" uid="uid://du4yksqeykmne" path="res://Buttons/new-tab-button.tres" id="7_yljed"]
+[ext_resource type="Script" path="res://Buttons/NewTabButton.cs" id="8_b80hx"]
+[ext_resource type="Script" path="res://Inputs/NewTabNameInput.cs" id="8_f07id"]
+[ext_resource type="Script" path="res://Inputs/NewTabFileExtensionLabel.cs" id="8_jp1wk"]
+[ext_resource type="StyleBox" uid="uid://bc7mdr06ykigs" path="res://Buttons/button-hover.tres" id="9_i5x0f"]
+[ext_resource type="StyleBox" uid="uid://cn7uywu15u0f1" path="res://Buttons/button-press.tres" id="10_ahjht"]
+[ext_resource type="StyleBox" uid="uid://wxvsiuujdugr" path="res://Buttons/button.tres" id="11_v7fpe"]
+[ext_resource type="Script" path="res://Buttons/NewTabCreateButton.cs" id="13_2yuqf"]
+
+[sub_resource type="TileSet" id="TileSet_n4h3g"]
+tile_shape = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_weha2"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fdgi2"]
+content_margin_left = 12.0
+content_margin_top = 12.0
+content_margin_right = 12.0
+content_margin_bottom = 12.0
+bg_color = Color(0.0313726, 0.0313726, 0.0313726, 0.847059)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+
+[sub_resource type="CodeHighlighter" id="CodeHighlighter_norrq"]
+number_color = Color(0.639216, 0.933333, 0.278431, 1)
+symbol_color = Color(0.882353, 0.266667, 0.556863, 1)
+function_color = Color(0, 0.48, 0, 1)
+member_variable_color = Color(0.4264, 0.4264, 0.82, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6x4xf"]
+bg_color = Color(0, 0, 0, 0.588235)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ac7kp"]
+bg_color = Color(0.09, 0.09, 0.09, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_afyyw"]
+content_margin_left = 8.0
+
+[node name="DungeonScreen" type="CanvasLayer"]
+
+[node name="DungeonBackgroundColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.2006, 0.32606, 0.34, 1)
+script = ExtResource("1_oh5ay")
+
+[node name="DungeonPanel" type="Panel" parent="."]
+clip_contents = true
+offset_left = 1152.0
+offset_right = 1920.0
+offset_bottom = 1200.0
+mouse_default_cursor_shape = 13
+theme_override_styles/panel = ExtResource("2_tfyod")
+
+[node name="DungeonTileMap" type="TileMapLayer" parent="DungeonPanel"]
+position = Vector2(576, 592)
+scale = Vector2(4, 4)
+tile_set = SubResource("TileSet_n4h3g")
+script = ExtResource("3_u6vqm")
+
+[node name="CodePanel" type="Panel" parent="."]
+offset_right = 1152.0
+offset_bottom = 1200.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_weha2")
+
+[node name="TabBar" type="TabBar" parent="CodePanel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_right = -64.0
+offset_bottom = 40.0
+grow_horizontal = 2
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 24
+tab_close_display_policy = 2
+drag_to_rearrange_enabled = true
+script = ExtResource("4_rwkhl")
+
+[node name="NewTabButton" type="Button" parent="CodePanel"]
+layout_mode = 0
+offset_left = 1088.0
+offset_right = 1152.0
+offset_bottom = 44.0
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 23
+theme_override_styles/hover = ExtResource("5_lxs5k")
+theme_override_styles/pressed = ExtResource("6_lbvix")
+theme_override_styles/normal = ExtResource("7_yljed")
+text = "+"
+script = ExtResource("8_b80hx")
+
+[node name="CodeFile" type="CodeEdit" parent="CodePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_q1d8l")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_fdgi2")
+syntax_highlighter = SubResource("CodeHighlighter_norrq")
+draw_tabs = true
+symbol_lookup_on_click = true
+line_folding = true
+gutters_draw_breakpoints_gutter = true
+gutters_draw_line_numbers = true
+code_completion_enabled = true
+script = ExtResource("5_b5lbn")
+
+[node name="NewTabPanel" type="Panel" parent="CodePanel"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6x4xf")
+
+[node name="NewTabModalPanel" type="Panel" parent="CodePanel/NewTabPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -100.0
+offset_right = 256.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ac7kp")
+
+[node name="NewTabLabel" type="Label" parent="CodePanel/NewTabPanel/NewTabModalPanel"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 8.0
+offset_right = 448.0
+offset_bottom = 63.0
+theme_override_font_sizes/font_size = 32
+text = "New File Name"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="NewTabNameInput" type="LineEdit" parent="CodePanel/NewTabPanel/NewTabModalPanel"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 384.0
+offset_bottom = 128.0
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("7_c3gui")
+max_length = 25
+script = ExtResource("8_f07id")
+
+[node name="NewTabFileExtensionLabel" type="Label" parent="CodePanel/NewTabPanel/NewTabModalPanel"]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 64.0
+offset_right = 448.0
+offset_bottom = 128.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxEmpty_afyyw")
+vertical_alignment = 1
+script = ExtResource("8_jp1wk")
+
+[node name="NewTabCreateButton" type="Button" parent="CodePanel/NewTabPanel/NewTabModalPanel"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 134.0
+offset_right = 384.0
+offset_bottom = 187.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/hover = ExtResource("9_i5x0f")
+theme_override_styles/pressed = ExtResource("10_ahjht")
+theme_override_styles/normal = ExtResource("11_v7fpe")
+text = "Create"
+script = ExtResource("13_2yuqf")

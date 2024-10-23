@@ -2,6 +2,7 @@ using System;
 using Godot;
 
 using PRPG.Constants;
+using PRPG.Enums;
 
 public partial class LanguageInput : OptionButton
 {
@@ -17,27 +18,23 @@ public partial class LanguageInput : OptionButton
 		PopulateLanguageOptions();
 	}
 
-	public override void _Process(double delta)
-	{
-	}
-
 	public override void _Input(InputEvent @event)
 	{
 		_languageInfoLabel.Text = Selected switch
 		{
-			> 0 => LanguageConstants.LanguagesWithDescriptions[(LanguageConstants.Language)Selected],
+			> 0 => LanguageConstants.LanguagesWithDescriptions[(Language)Selected],
 			_ => "Information about your language selection will show up here, once you've made a choice."
 		};
 
 		_languageSample.Text = Selected switch
 		{
-			> 0 => LanguageConstants.LanguageExamples[(LanguageConstants.Language)Selected],
+			> 0 => LanguageConstants.LanguageExamples[(Language)Selected],
 			_ => string.Empty
 		};
 
 		_languageSample.SyntaxHighlighter = Selected switch
 		{
-			> 0 => CodeHighlightingConstants.LanguageCodeHighlighters[(LanguageConstants.Language)Selected],
+			> 0 => CodeHighlightingConstants.LanguageCodeHighlighters[(Language)Selected],
 			_ => null
 		};
 	}

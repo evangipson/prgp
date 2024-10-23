@@ -6,5 +6,6 @@
 		public const string HomeScenePath = "res://Screens/intro_screen.tscn";
 		public const string IntroScenePath = "res://Screens/intro_screen.tscn";
 		public const string CreateHeroScenePath = "res://Screens/create_hero_screen.tscn";
+		public const string DungeonScenePath = "res://Screens/dungeon_screen.tscn";
 	}
 }

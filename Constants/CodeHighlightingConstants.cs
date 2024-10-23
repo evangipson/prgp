@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
-
 using Godot;
+
+using PRPG.Enums;
 
 namespace PRPG.Constants
 {
@@ -37,9 +38,9 @@ namespace PRPG.Constants
 			["Int"] = new Color(0.1f, 0.75f, 0.45f, 1.0f)
 		};
 
-		public static readonly Dictionary<LanguageConstants.Language, CodeHighlighter> LanguageCodeHighlighters = new()
+		public static readonly Dictionary<Language, CodeHighlighter> LanguageCodeHighlighters = new()
 		{
-			[LanguageConstants.Language.FluidScript] = new CodeHighlighter()
+			[Language.FluidScript] = new CodeHighlighter()
 			{
 				NumberColor = NumberColor,
 				SymbolColor = SymbolColor,
@@ -48,7 +49,7 @@ namespace PRPG.Constants
 				MemberKeywordColors = FluidScriptKeywords,
 				KeywordColors = FluidScriptKeywords
 			},
-			[LanguageConstants.Language.TypeR] = new CodeHighlighter()
+			[Language.TypeR] = new CodeHighlighter()
 			{
 				NumberColor = NumberColor,
 				SymbolColor = SymbolColor,
@@ -57,7 +58,7 @@ namespace PRPG.Constants
 				MemberKeywordColors = TypeRKeywords,
 				KeywordColors = TypeRKeywords
 			},
-			[LanguageConstants.Language.N] = new CodeHighlighter()
+			[Language.N] = new CodeHighlighter()
 			{
 				NumberColor = NumberColor,
 				SymbolColor = SymbolColor,
@@ -66,7 +67,7 @@ namespace PRPG.Constants
 				MemberKeywordColors = NKeywords,
 				KeywordColors = NKeywords
 			},
-			[LanguageConstants.Language.LambdaFlow] = new CodeHighlighter()
+			[Language.LambdaFlow] = new CodeHighlighter()
 			{
 				NumberColor = NumberColor,
 				SymbolColor = SymbolColor,

@@ -1,24 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
+using PRPG.Enums;
 
 namespace PRPG.Constants
 {
 	public static class LanguageConstants
 	{
-		public enum Language
-		{
-			FluidScript = 1,
-			TypeR,
-			N,
-			LambdaFlow
-		};
-
 		public static readonly Dictionary<Language, string> LanguagesWithDescriptions = new()
 		{
 			[Language.FluidScript] = $"{Enum.GetName(Language.FluidScript)} is a popular interpreted scripting language that is typically easy for beginners to pick up.",
 			[Language.TypeR] = $"{Enum.GetName(Language.TypeR)} is a popular object-oriented language suited for beginners and mid-level programmers alike; powerful things like inheritance are possible in {Enum.GetName(Language.TypeR)}.",
 			[Language.N] = $"{Enum.GetName(Language.N)} is a scientific language, suited for numerical and statistical programming. Performing large, complex calculations is much easier in {Enum.GetName(Language.N)}.",
 			[Language.LambdaFlow] = $"{Enum.GetName(Language.LambdaFlow)} is a more obscure functional-style language that is hard to master, but powerful. You'll be writing many functions that are composable and succinct."
+		};
+
+		public static readonly Dictionary<Language, string> LanguageFileExtensions = new()
+		{
+			[Language.FluidScript] = "fs",
+			[Language.TypeR] = "tr",
+			[Language.N] = "n",
+			[Language.LambdaFlow] = "lf"
 		};
 
 		public static readonly Dictionary<Language, string> LanguageExamples = new()

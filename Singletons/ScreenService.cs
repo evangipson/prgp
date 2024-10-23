@@ -5,13 +5,13 @@ namespace PRPG.Singletons
 {
 	public partial class ScreenService : Node
 	{
-		private Window Root => GetTree().Root;
-
-		public Node CurrentScene { get; set; }
+		private Window _root;
+		private Node _currentScene;
 
 		public override void _Ready()
 		{
-			CurrentScene = Root.GetChild(Root.GetChildCount() - 1);
+			_root = GetTree().Root;
+			_currentScene = _root.GetChild(_root.GetChildCount() - 1);
 		}
 
 		public void GotoScene(string scenePath)
@@ -21,10 +21,10 @@ namespace PRPG.Singletons
 
 		public void DeferredGotoScene(string scenePath)
 		{
-			CurrentScene.Free();
-			CurrentScene = GD.Load<PackedScene>(scenePath).Instantiate();
-			Root.AddChild(CurrentScene);
-			GetTree().CurrentScene = CurrentScene;
+			_currentScene.Free();
+			_currentScene = GD.Load<PackedScene>(scenePath).Instantiate();
+			_root.AddChild(_currentScene);
+			GetTree().CurrentScene = _currentScene;
 		}
 	}
 }
