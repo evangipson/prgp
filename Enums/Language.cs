@@ -2,7 +2,7 @@
 {
 	public enum Language
 	{
-		FluidScript = 1,
+		FluidScript,
 		TypeR,
 		N,
 		LambdaFlow

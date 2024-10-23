@@ -15,8 +15,4 @@ public partial class CodeInput : CodeEdit
 		_playerLanguage = _playerService.GetPlayerLanguage();
 		SyntaxHighlighter = CodeHighlightingConstants.LanguageCodeHighlighters[_playerLanguage];
 	}
-
-	public override void _Process(double delta)
-	{
-	}
 }

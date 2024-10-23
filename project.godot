@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 ColorService="*res://Singletons/ColorService.cs"
 ScreenService="*res://Singletons/ScreenService.cs"
 PlayerService="*res://Singletons/PlayerService.cs"
+CodeEditorFactory="*res://Singletons/CodeEditorFactory.cs"
 
 [display]
 

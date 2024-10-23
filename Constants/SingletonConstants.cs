@@ -5,5 +5,7 @@
 		public const string ScreenServicePath = "/root/ScreenService";
 
 		public const string PlayerServicePath = "/root/PlayerService";
+
+		public const string CodeEditorFactoryPath = "/root/CodeEditorFactory";
 	}
 }

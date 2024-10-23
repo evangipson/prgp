@@ -18,7 +18,7 @@ public partial class StartLevelButton : Button
 
 	public override void _Pressed()
 	{
-		_playerService.SetPlayerLanguage(_languageInput.Selected);
+		_playerService.SetPlayerLanguage(_languageInput.Selected - 1);
 		_screenService.GotoScene(SceneConstants.DungeonScenePath);
 	}
 }
