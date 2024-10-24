@@ -1,34 +1,34 @@
 using Godot;
 
 using PRPG.Constants;
-using PRPG.Enums;
 
 namespace PRPG.Singletons
 {
-	public partial class CodeEditorFactory : Node
+	public static class CodeEditorFactory
 	{
-		private PlayerService _playerService;
-		private Language _playerLanguage;
+		private static readonly Font _firaCodeFont = GD.Load<Font>("res://Font/FiraCode-Medium.ttf");
 
-		public override void _Ready()
+		public static CodeEdit CreateCodeEditor(string newTabName)
 		{
-			_playerService = GetNode<PlayerService>(SingletonConstants.PlayerServicePath);
-			_playerLanguage = _playerService.GetPlayerLanguage();
+			CodeEdit newCodeEditor = new()
+			{
+				AutoBraceCompletionEnabled = true,
+				IndentAutomatic = true,
+				CaretBlink = true,
+				CodeCompletionEnabled = true,
+				DrawTabs = true,
+				ContextMenuEnabled = true,
+				Editable = true,
+				HighlightCurrentLine = true,
+				GuttersDrawLineNumbers = true,
+				SyntaxHighlighter = CodeHighlightingConstants.LanguageCodeHighlighters[PlayerService.GetPlayerLanguage()],
+				Name = newTabName,
+				Text = LanguageConstants.LanguageExamples[PlayerService.GetPlayerLanguage()]
+			};
+
+			newCodeEditor.AddThemeFontOverride("font", _firaCodeFont);
+
+			return newCodeEditor;
 		}
-
-		public CodeEdit CreateCodeEditor() => new()
-		{
-			AutoBraceCompletionEnabled = true,
-			IndentAutomatic = true,
-			CaretBlink = true,
-			CodeCompletionEnabled = true,
-			DrawTabs = true,
-			ContextMenuEnabled = true,
-			Editable = true,
-			HighlightCurrentLine = true,
-			GuttersDrawLineNumbers = true,
-			SyntaxHighlighter = CodeHighlightingConstants.LanguageCodeHighlighters[_playerLanguage],
-			Name = $"main.{LanguageConstants.LanguageFileExtensions[_playerLanguage]}"
-		};
 	}
 }

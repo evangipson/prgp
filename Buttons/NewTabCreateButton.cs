@@ -1,29 +1,24 @@
 using Godot;
-
 using PRPG.Constants;
 using PRPG.Singletons;
 
 public partial class NewTabCreateButton : Button
 {
-	private Panel _newTabPanel;
+	private Panel _newTabModalBackdropPanel;
 	private Panel _newTabModalPanel;
 	private Panel _codePanel;
 	private TabContainer _codeEditor;
 	private LineEdit _newTabNameInput;
-	private PlayerService _playerService;
-	private CodeEditorFactory _codeEditorFactory;
+	private TabBar _tabBar;
 
 	public override void _Ready()
 	{
 		_newTabModalPanel = GetParent<Panel>();
-		_newTabPanel = _newTabModalPanel.GetParent<Panel>();
-		_codePanel = _newTabPanel.GetParent<Panel>();
-
-		_codeEditor = _codePanel.GetNode<TabContainer>("CodeEditorTabContainer");
 		_newTabNameInput = _newTabModalPanel.GetNode<LineEdit>("NewTabNameInput");
-
-		_playerService = GetNode<PlayerService>(SingletonConstants.PlayerServicePath);
-		_codeEditorFactory = GetNode<CodeEditorFactory>(SingletonConstants.CodeEditorFactoryPath);
+		_newTabModalBackdropPanel = _newTabModalPanel.GetParent<Panel>();
+		_codePanel = _newTabModalBackdropPanel.GetParent<Panel>();
+		_codeEditor = _codePanel.GetNode<TabContainer>("CodeEditorTabContainer");
+		_tabBar = _codeEditor.GetTabBar();
 	}
 
 	public override void _Pressed()
@@ -33,8 +28,9 @@ public partial class NewTabCreateButton : Button
 			return;
 		}
 
-		var newCodeTab = _codeEditorFactory.CreateCodeEditor();
+		var newCodeTab = CodeEditorFactory.CreateCodeEditor(_newTabNameInput.Text);
 		_codeEditor.AddChild(newCodeTab);
-		_newTabPanel.Visible = false;
+		_tabBar.SetTabTitle(_tabBar.TabCount - 1, $"{_newTabNameInput.Text}.{LanguageConstants.LanguageFileExtensions[PlayerService.GetPlayerLanguage()]}");
+		_newTabModalBackdropPanel.Visible = false;
 	}
 }

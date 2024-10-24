@@ -4,11 +4,11 @@ using PRPG.Enums;
 
 namespace PRPG.Singletons
 {
-	public partial class PlayerService : Node
+	public static class PlayerService
 	{
-		private Language _playerLanguage;
+		private static Language _playerLanguage;
 
-		public void SetPlayerLanguage(int languageIndex)
+		public static void SetPlayerLanguage(int languageIndex)
 		{
 			try
 			{
@@ -20,6 +20,6 @@ namespace PRPG.Singletons
 			}
 		}
 
-		public Language GetPlayerLanguage() => _playerLanguage;
+		public static Language GetPlayerLanguage() => _playerLanguage;
 	}
 }

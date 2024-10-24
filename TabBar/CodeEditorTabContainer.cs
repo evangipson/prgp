@@ -6,19 +6,31 @@ using PRPG.Singletons;
 
 public partial class CodeEditorTabContainer : TabContainer
 {
-	private PlayerService _playerService;
-	private CodeEditorFactory _codeEditorFactory;
 	private Language _playerLanguage;
 	private string _languageFileExtension;
+	private TabBar _tabBar;
 
 	public override void _Ready()
 	{
-		_playerService = GetNode<PlayerService>(SingletonConstants.PlayerServicePath);
-		_codeEditorFactory = GetNode<CodeEditorFactory>(SingletonConstants.CodeEditorFactoryPath);
-		_playerLanguage = _playerService.GetPlayerLanguage();
+		_playerLanguage = PlayerService.GetPlayerLanguage();
 		_languageFileExtension = LanguageConstants.LanguageFileExtensions[_playerLanguage];
+		_tabBar = GetTabBar();
 
-		var codeEditor = _codeEditorFactory.CreateCodeEditor();
+		_tabBar.TabCloseDisplayPolicy = TabBar.CloseButtonDisplayPolicy.ShowAlways;
+		_tabBar.TabClosePressed += tabIndex => _tabBar.RemoveTab((int)tabIndex);
+
+		CreateNewTabInCodeEditor();
+	}
+
+	private void CreateNewTabInCodeEditor()
+	{
+		var codeEditor = CodeEditorFactory.CreateCodeEditor("main");
 		AddChild(codeEditor);
+		SetNewTabTitle(codeEditor.Name);
+	}
+
+	private void SetNewTabTitle(string codeEditorTabName)
+	{
+		_tabBar.SetTabTitle(_tabBar.TabCount - 1, $"{codeEditorTabName}.{LanguageConstants.LanguageFileExtensions[_playerLanguage]}");
 	}
 }

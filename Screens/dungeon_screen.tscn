@@ -1,8 +1,10 @@
-[gd_scene load_steps=22 format=3 uid="uid://dn4xunvbsawf6"]
+[gd_scene load_steps=24 format=3 uid="uid://dn4xunvbsawf6"]
 
 [ext_resource type="Script" path="res://Screens/BackgroundColorRect.cs" id="1_oh5ay"]
 [ext_resource type="StyleBox" uid="uid://ffwgcevw8oln" path="res://Panel/dungeon-panel.tres" id="2_tfyod"]
 [ext_resource type="Script" path="res://TileMap/DungeonTileMap.cs" id="3_u6vqm"]
+[ext_resource type="FontFile" uid="uid://dybo80dpgdbny" path="res://Font/FiraCode-Medium.ttf" id="4_1kfxu"]
+[ext_resource type="StyleBox" uid="uid://dov3xuo0ot8t7" path="res://Inputs/code-editor.tres" id="4_gi4dq"]
 [ext_resource type="Script" path="res://TabBar/CodeEditorTabContainer.cs" id="4_jhcto"]
 [ext_resource type="StyleBox" uid="uid://c2wis35u0l2tr" path="res://Buttons/new-tab-button-hover.tres" id="5_lxs5k"]
 [ext_resource type="StyleBox" uid="uid://do4an8wakvcnr" path="res://Buttons/new-tab-button-press.tres" id="6_lbvix"]
@@ -11,6 +13,7 @@
 [ext_resource type="Script" path="res://Buttons/NewTabButton.cs" id="8_b80hx"]
 [ext_resource type="Script" path="res://Inputs/NewTabNameInput.cs" id="8_f07id"]
 [ext_resource type="Script" path="res://Inputs/NewTabFileExtensionLabel.cs" id="8_jp1wk"]
+[ext_resource type="Script" path="res://Panel/ModalBackdropPanel.cs" id="9_4e82n"]
 [ext_resource type="StyleBox" uid="uid://bc7mdr06ykigs" path="res://Buttons/button-hover.tres" id="9_i5x0f"]
 [ext_resource type="StyleBox" uid="uid://cn7uywu15u0f1" path="res://Buttons/button-press.tres" id="10_ahjht"]
 [ext_resource type="StyleBox" uid="uid://wxvsiuujdugr" path="res://Buttons/button.tres" id="11_v7fpe"]
@@ -26,17 +29,8 @@ content_margin_right = 4.0
 content_margin_bottom = 4.0
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wv0bl"]
-bg_color = Color(0.2552, 0.423013, 0.58, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_color = Color(0.1156, 0.20536, 0.34, 1)
-expand_margin_left = 4.0
-expand_margin_right = 4.0
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6x4xf"]
-bg_color = Color(0, 0, 0, 0.588235)
+bg_color = Color(0, 0, 0, 0.690196)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ac7kp"]
 bg_color = Color(0.09, 0.09, 0.09, 1)
@@ -49,6 +43,8 @@ corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
+shadow_size = 18
+shadow_offset = Vector2(0, 12)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_afyyw"]
 content_margin_left = 8.0
@@ -90,89 +86,100 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_1kfxu")
 theme_override_font_sizes/font_size = 24
-theme_override_styles/tab_selected = SubResource("StyleBoxFlat_wv0bl")
+theme_override_styles/panel = ExtResource("4_gi4dq")
 drag_to_rearrange_enabled = true
 script = ExtResource("4_jhcto")
 
 [node name="NewTabButton" type="Button" parent="CodePanel"]
 layout_mode = 0
 offset_left = 1088.0
+offset_top = 1.0
 offset_right = 1152.0
 offset_bottom = 44.0
+tooltip_text = "Add a new file to the code editor"
+mouse_default_cursor_shape = 2
 theme_override_constants/outline_size = 4
-theme_override_font_sizes/font_size = 23
+theme_override_fonts/font = ExtResource("4_1kfxu")
+theme_override_font_sizes/font_size = 26
 theme_override_styles/hover = ExtResource("5_lxs5k")
 theme_override_styles/pressed = ExtResource("6_lbvix")
 theme_override_styles/normal = ExtResource("7_yljed")
 text = "+"
 script = ExtResource("8_b80hx")
 
-[node name="NewTabPanel" type="Panel" parent="CodePanel"]
+[node name="NewTabModalBackdropPanel" type="Panel" parent="CodePanel"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 768.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_6x4xf")
+script = ExtResource("9_4e82n")
 
-[node name="NewTabModalPanel" type="Panel" parent="CodePanel/NewTabPanel"]
+[node name="NewTabModalPanel" type="Panel" parent="CodePanel/NewTabModalBackdropPanel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -256.0
-offset_top = -100.0
-offset_right = 256.0
-offset_bottom = 100.0
+offset_left = -348.0
+offset_top = -136.0
+offset_right = 348.0
+offset_bottom = 136.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ac7kp")
 
-[node name="NewTabLabel" type="Label" parent="CodePanel/NewTabPanel/NewTabModalPanel"]
+[node name="NewTabLabel" type="Label" parent="CodePanel/NewTabModalBackdropPanel/NewTabModalPanel"]
 layout_mode = 0
-offset_left = 64.0
+offset_left = 168.0
 offset_top = 8.0
-offset_right = 448.0
+offset_right = 552.0
 offset_bottom = 63.0
-theme_override_font_sizes/font_size = 32
+theme_override_fonts/font = ExtResource("4_1kfxu")
+theme_override_font_sizes/font_size = 26
 text = "New File Name"
 horizontal_alignment = 1
-vertical_alignment = 2
+vertical_alignment = 1
 
-[node name="NewTabNameInput" type="LineEdit" parent="CodePanel/NewTabPanel/NewTabModalPanel"]
+[node name="NewTabNameInput" type="LineEdit" parent="CodePanel/NewTabModalBackdropPanel/NewTabModalPanel"]
 layout_mode = 0
-offset_left = 64.0
+offset_left = 136.0
 offset_top = 64.0
-offset_right = 384.0
+offset_right = 520.0
 offset_bottom = 128.0
+theme_override_fonts/font = ExtResource("4_1kfxu")
 theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = ExtResource("7_c3gui")
 max_length = 25
 script = ExtResource("8_f07id")
 
-[node name="NewTabFileExtensionLabel" type="Label" parent="CodePanel/NewTabPanel/NewTabModalPanel"]
+[node name="NewTabFileExtensionLabel" type="Label" parent="CodePanel/NewTabModalBackdropPanel/NewTabModalPanel"]
 layout_mode = 0
-offset_left = 384.0
+offset_left = 520.0
 offset_top = 64.0
-offset_right = 448.0
+offset_right = 584.0
 offset_bottom = 128.0
+theme_override_fonts/font = ExtResource("4_1kfxu")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxEmpty_afyyw")
 vertical_alignment = 1
 script = ExtResource("8_jp1wk")
 
-[node name="NewTabCreateButton" type="Button" parent="CodePanel/NewTabPanel/NewTabModalPanel"]
+[node name="NewTabCreateButton" type="Button" parent="CodePanel/NewTabModalBackdropPanel/NewTabModalPanel"]
 layout_mode = 0
-offset_left = 128.0
-offset_top = 134.0
-offset_right = 384.0
-offset_bottom = 187.0
-theme_override_font_sizes/font_size = 32
+offset_left = 232.0
+offset_top = 168.0
+offset_right = 488.0
+offset_bottom = 221.0
+theme_override_fonts/font = ExtResource("4_1kfxu")
+theme_override_font_sizes/font_size = 26
 theme_override_styles/hover = ExtResource("9_i5x0f")
 theme_override_styles/pressed = ExtResource("10_ahjht")
 theme_override_styles/normal = ExtResource("11_v7fpe")

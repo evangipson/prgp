@@ -1,15 +1,182 @@
-[gd_scene load_steps=7 format=3 uid="uid://uctgsf7xyw1k"]
+[gd_scene load_steps=19 format=3 uid="uid://uctgsf7xyw1k"]
 
 [ext_resource type="Script" path="res://Screens/BackgroundColorRect.cs" id="1_vjdxl"]
+[ext_resource type="FontFile" uid="uid://dybo80dpgdbny" path="res://Font/FiraCode-Medium.ttf" id="2_68ap4"]
 [ext_resource type="StyleBox" uid="uid://bc7mdr06ykigs" path="res://Buttons/button-hover.tres" id="2_bxdq5"]
 [ext_resource type="StyleBox" uid="uid://cn7uywu15u0f1" path="res://Buttons/button-press.tres" id="3_k7rp1"]
 [ext_resource type="StyleBox" uid="uid://wxvsiuujdugr" path="res://Buttons/button.tres" id="4_euags"]
 [ext_resource type="Script" path="res://Buttons/CreateHeroButton.cs" id="5_grg6y"]
 
-[sub_resource type="SystemFont" id="SystemFont_x7ifq"]
-font_weight = 600
-font_stretch = 125
-subpixel_positioning = 0
+[sub_resource type="Animation" id="Animation_sgbmt"]
+resource_name = "IntroLabelAnimation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.966667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_v5j0i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rnsv7"]
+_data = {
+"IntroLabelAnimation": SubResource("Animation_sgbmt"),
+"RESET": SubResource("Animation_v5j0i")
+}
+
+[sub_resource type="Animation" id="Animation_uvv0g"]
+resource_name = "IntroMessageLabelAnimation"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1.5, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_chhp6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yt1e8"]
+_data = {
+"IntroMessageLabelAnimation": SubResource("Animation_uvv0g"),
+"RESET": SubResource("Animation_chhp6")
+}
+
+[sub_resource type="Animation" id="Animation_he1as"]
+resource_name = "CreateYourHeroAnimation"
+length = 5.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(4.5, 5.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_hbrko"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dnajg"]
+_data = {
+"CreateYourHeroAnimation": SubResource("Animation_he1as"),
+"RESET": SubResource("Animation_hbrko")
+}
+
+[sub_resource type="Animation" id="Animation_uyftt"]
+resource_name = "CreateHeroButtonAnimation"
+length = 7.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(6.03333, 6.53333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(6.03333, 6.43333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(608, 900), Vector2(608, 920)]
+}
+
+[sub_resource type="Animation" id="Animation_403ji"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(608, 920)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ti4lf"]
+_data = {
+"CreateHeroButtonAnimation": SubResource("Animation_uyftt"),
+"RESET": SubResource("Animation_403ji")
+}
 
 [node name="IntroScreen" type="CanvasLayer"]
 
@@ -23,43 +190,101 @@ color = Color(0.2134, 0.198, 0.33, 1)
 script = ExtResource("1_vjdxl")
 
 [node name="IntroLabel" type="Label" parent="."]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 328.0
+offset_top = -520.0
+offset_right = -328.0
+offset_bottom = -351.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_68ap4")
+theme_override_font_sizes/font_size = 128
+text = "Welcome to PRPG!"
+vertical_alignment = 1
+autowrap_mode = 3
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="TypewriterAnimation" type="AnimationPlayer" parent="IntroLabel"]
+libraries = {
+"": SubResource("AnimationLibrary_rnsv7")
+}
+autoplay = "IntroLabelAnimation"
+
+[node name="IntroMessageLabel" type="Label" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 128.0
-offset_top = 94.0
+offset_top = 392.0
 offset_right = -128.0
-offset_bottom = -304.0
+offset_bottom = -624.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 72
-text = "Welcome to PRPG!
-
-You'll be writing code to try and get your heroes the most loot possible from the dungeon.
-
-Let's create your first hero."
-horizontal_alignment = 1
-vertical_alignment = 1
+theme_override_fonts/font = ExtResource("2_68ap4")
+theme_override_font_sizes/font_size = 56
+text = "You'll be writing code to try and get your heroes the most loot possible from the dungeon."
 autowrap_mode = 3
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="TypewriterAnimation" type="AnimationPlayer" parent="IntroMessageLabel"]
+libraries = {
+"": SubResource("AnimationLibrary_yt1e8")
+}
+autoplay = "IntroMessageLabelAnimation"
+
+[node name="CreateYourHeroLabel" type="Label" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 128.0
+offset_top = 704.0
+offset_right = -192.0
+offset_bottom = -368.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_68ap4")
+theme_override_font_sizes/font_size = 56
+text = "Let's create your first hero."
+autowrap_mode = 3
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="TypewriterAnimation" type="AnimationPlayer" parent="CreateYourHeroLabel"]
+libraries = {
+"": SubResource("AnimationLibrary_dnajg")
+}
+autoplay = "CreateYourHeroAnimation"
 
 [node name="CreateHeroButton" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -352.0
-offset_top = -240.0
+offset_top = -280.0
 offset_right = 352.0
-offset_bottom = -112.0
+offset_bottom = -152.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 4
 mouse_default_cursor_shape = 2
-theme_override_fonts/font = SubResource("SystemFont_x7ifq")
+theme_override_fonts/font = ExtResource("2_68ap4")
 theme_override_font_sizes/font_size = 64
 theme_override_styles/hover = ExtResource("2_bxdq5")
 theme_override_styles/pressed = ExtResource("3_k7rp1")
 theme_override_styles/normal = ExtResource("4_euags")
 text = "Create Hero"
 script = ExtResource("5_grg6y")
+
+[node name="FadeDownAnimation" type="AnimationPlayer" parent="CreateHeroButton"]
+libraries = {
+"": SubResource("AnimationLibrary_ti4lf")
+}
+autoplay = "CreateHeroButtonAnimation"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://s18y6p87o802"]
+[gd_scene load_steps=11 format=3 uid="uid://s18y6p87o802"]
 
 [ext_resource type="Script" path="res://Screens/BackgroundColorRect.cs" id="1_4o3i4"]
 [ext_resource type="StyleBox" uid="uid://cv43njj3kqk41" path="res://Inputs/normal-input.tres" id="2_cxc3q"]
@@ -8,11 +8,6 @@
 [ext_resource type="StyleBox" uid="uid://cn7uywu15u0f1" path="res://Buttons/button-press.tres" id="6_etmo2"]
 [ext_resource type="StyleBox" uid="uid://wxvsiuujdugr" path="res://Buttons/button.tres" id="7_44mdg"]
 [ext_resource type="Script" path="res://Buttons/StartLevelButton.cs" id="8_x43xo"]
-
-[sub_resource type="SystemFont" id="SystemFont_bhfiy"]
-font_weight = 600
-font_stretch = 125
-subpixel_positioning = 0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fa4op"]
 content_margin_left = 12.0
@@ -54,6 +49,7 @@ offset_top = 104.0
 offset_right = 768.0
 offset_bottom = 192.0
 size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("4_0bneq")
 theme_override_font_sizes/font_size = 64
 text = "Hero Name"
 horizontal_alignment = 2
@@ -64,6 +60,7 @@ offset_top = 96.0
 offset_right = 1600.0
 offset_bottom = 192.0
 theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("4_0bneq")
 theme_override_font_sizes/font_size = 64
 theme_override_styles/normal = ExtResource("2_cxc3q")
 placeholder_text = "Programmer Hero"
@@ -75,6 +72,7 @@ offset_top = 232.0
 offset_right = 768.0
 offset_bottom = 320.0
 size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("4_0bneq")
 theme_override_font_sizes/font_size = 64
 text = "Language"
 horizontal_alignment = 2
@@ -86,27 +84,33 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -352.0
-offset_top = -152.0
+offset_top = -192.0
 offset_right = 352.0
-offset_bottom = -24.0
+offset_bottom = -64.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 4
 mouse_default_cursor_shape = 2
-theme_override_fonts/font = SubResource("SystemFont_bhfiy")
+theme_override_fonts/font = ExtResource("4_0bneq")
 theme_override_font_sizes/font_size = 64
 theme_override_styles/hover = ExtResource("5_vihkv")
 theme_override_styles/pressed = ExtResource("6_etmo2")
 theme_override_styles/normal = ExtResource("7_44mdg")
+disabled = true
 text = "Start Game"
 script = ExtResource("8_x43xo")
 
 [node name="LanguageInput" type="OptionButton" parent="StartLevelButton"]
+layout_mode = 0
 offset_left = 224.0
-offset_top = -824.0
+offset_top = -784.0
 offset_right = 992.0
-offset_bottom = -728.0
+offset_bottom = -688.0
+theme_override_fonts/font = ExtResource("4_0bneq")
 theme_override_font_sizes/font_size = 64
+theme_override_styles/focus = ExtResource("2_cxc3q")
+theme_override_styles/hover = ExtResource("2_cxc3q")
+theme_override_styles/pressed = ExtResource("2_cxc3q")
 theme_override_styles/normal = ExtResource("2_cxc3q")
 theme_override_constants/arrow_margin = 25
 theme_override_constants/modulate_arrow = 64
@@ -118,15 +122,17 @@ layout_mode = 0
 offset_top = 105.0
 offset_right = 768.0
 offset_bottom = 217.0
+theme_override_fonts/font = ExtResource("4_0bneq")
 theme_override_font_sizes/font_size = 22
 autowrap_mode = 3
 
 [node name="LanguageSample" type="CodeEdit" parent="StartLevelButton/LanguageInput"]
+visible = false
 layout_mode = 0
 offset_left = -448.0
 offset_top = 224.0
 offset_right = 768.0
-offset_bottom = 800.0
+offset_bottom = 736.0
 theme_override_fonts/font = ExtResource("4_0bneq")
 theme_override_font_sizes/font_size = 18
 theme_override_styles/normal = SubResource("StyleBoxFlat_fa4op")

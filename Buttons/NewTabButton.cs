@@ -2,16 +2,15 @@ using Godot;
 
 public partial class NewTabButton : Button
 {
-	private Panel _newTabPanel;
+	private Panel _newTabModalBackdropPanel;
 
-	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		_newTabPanel = GetParent().GetNode<Panel>("NewTabPanel");
+		_newTabModalBackdropPanel = GetParent().GetNode<Panel>("NewTabModalBackdropPanel");
 	}
 
 	public override void _Pressed()
 	{
-		_newTabPanel.Visible = true;
+		_newTabModalBackdropPanel.Visible = true;
 	}
 }
