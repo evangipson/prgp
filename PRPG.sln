@@ -1,19 +1,38 @@
-﻿Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PRPG", "PRPG.csproj", "{082EB235-42BD-419E-B03D-0BEED1E97028}"
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35122.118
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PRPG.Platform", "Platform\PRPG.Platform\PRPG.Platform.csproj", "{0E00DF27-1D9D-4B6D-ABAF-730AFF40A325}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PRPG.Tests", "Tests\PRPG.Tests\PRPG.Tests.csproj", "{92E50AFA-E245-4D28-B53F-18395344DB28}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-	Debug|Any CPU = Debug|Any CPU
-	ExportDebug|Any CPU = ExportDebug|Any CPU
-	ExportRelease|Any CPU = ExportRelease|Any CPU
+		Debug|Any CPU = Debug|Any CPU
+		ExportDebug|Any CPU = ExportDebug|Any CPU
+		ExportRelease|Any CPU = ExportRelease|Any CPU
+		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{082EB235-42BD-419E-B03D-0BEED1E97028}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{082EB235-42BD-419E-B03D-0BEED1E97028}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{082EB235-42BD-419E-B03D-0BEED1E97028}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
-		{082EB235-42BD-419E-B03D-0BEED1E97028}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
-		{082EB235-42BD-419E-B03D-0BEED1E97028}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
-		{082EB235-42BD-419E-B03D-0BEED1E97028}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+		{0E00DF27-1D9D-4B6D-ABAF-730AFF40A325}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E00DF27-1D9D-4B6D-ABAF-730AFF40A325}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E00DF27-1D9D-4B6D-ABAF-730AFF40A325}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
+		{0E00DF27-1D9D-4B6D-ABAF-730AFF40A325}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
+		{0E00DF27-1D9D-4B6D-ABAF-730AFF40A325}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
+		{0E00DF27-1D9D-4B6D-ABAF-730AFF40A325}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+		{0E00DF27-1D9D-4B6D-ABAF-730AFF40A325}.Release|Any CPU.ActiveCfg = ExportRelease|Any CPU
+		{0E00DF27-1D9D-4B6D-ABAF-730AFF40A325}.Release|Any CPU.Build.0 = ExportRelease|Any CPU
+		{92E50AFA-E245-4D28-B53F-18395344DB28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92E50AFA-E245-4D28-B53F-18395344DB28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92E50AFA-E245-4D28-B53F-18395344DB28}.ExportDebug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92E50AFA-E245-4D28-B53F-18395344DB28}.ExportDebug|Any CPU.Build.0 = Debug|Any CPU
+		{92E50AFA-E245-4D28-B53F-18395344DB28}.ExportRelease|Any CPU.ActiveCfg = Release|Any CPU
+		{92E50AFA-E245-4D28-B53F-18395344DB28}.ExportRelease|Any CPU.Build.0 = Release|Any CPU
+		{92E50AFA-E245-4D28-B53F-18395344DB28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92E50AFA-E245-4D28-B53F-18395344DB28}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 EndGlobal
