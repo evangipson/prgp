@@ -17,5 +17,15 @@ namespace PRPG.Tests.Parsers
 			Assert.NotNull(programCodeTokens);
 			Assert.NotEmpty(programCodeTokens);
 		}
+
+		[Fact]
+		public void RunProgram_ShouldCreateExpressions_WhenProvidedValidProgramCode()
+		{
+			var fluidScriptCode = LanguageConstants.LanguageExamples[Language.FluidScript];
+			var programContext = _fluidScriptParser.RunProgram(fluidScriptCode);
+
+			Assert.NotNull(programContext);
+			Assert.NotEmpty(programContext);
+		}
 	}
 }
