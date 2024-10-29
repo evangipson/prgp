@@ -1,6 +1,9 @@
 using Godot;
 
-public partial class ExitGameButton : Button
+namespace PRPG.Buttons
 {
-	public override void _Pressed() => GetTree().Quit();
+	public partial class ExitGameButton : Button
+	{
+		public override void _Pressed() => GetTree().Quit();
+	}
 }

@@ -4,13 +4,16 @@ using PRPG.Constants;
 using PRPG.Enums;
 using PRPG.Singletons;
 
-public partial class CodeInput : CodeEdit
+namespace PRPG.Inputs
 {
-	private Language _playerLanguage;
-
-	public override void _Ready()
+	public partial class CodeInput : CodeEdit
 	{
-		_playerLanguage = PlayerService.GetPlayerLanguage();
-		SyntaxHighlighter = CodeHighlightingConstants.LanguageCodeHighlighters[_playerLanguage];
+		private Language _playerLanguage;
+
+		public override void _Ready()
+		{
+			_playerLanguage = PlayerService.GetPlayerLanguage();
+			SyntaxHighlighter = CodeHighlightingConstants.LanguageCodeHighlighters[_playerLanguage];
+		}
 	}
 }

@@ -3,10 +3,13 @@ using Godot;
 using PRPG.Constants;
 using PRPG.Singletons;
 
-public partial class NewTabFileExtensionLabel : Label
+namespace PRPG.Inputs
 {
-	public override void _Ready()
+	public partial class NewTabFileExtensionLabel : Label
 	{
-		Text = $".{LanguageConstants.LanguageFileExtensions[PlayerService.GetPlayerLanguage()]}";
+		public override void _Ready()
+		{
+			Text = $".{LanguageConstants.LanguageFileExtensions[PlayerService.GetPlayerLanguage()]}";
+		}
 	}
 }

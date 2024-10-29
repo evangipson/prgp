@@ -4,62 +4,65 @@ using Godot;
 using PRPG.Constants;
 using PRPG.Enums;
 
-public partial class LanguageInput : OptionButton
+namespace PRPG.Inputs
 {
-	private Label _languageInfoLabel;
-	private CodeEdit _languageSample;
-	private Button _startGameButton;
-	private SyntaxHighlighter _syntaxHighlighter;
-
-	public override void _Ready()
+	public partial class LanguageInput : OptionButton
 	{
-		_languageInfoLabel = GetNode<Label>("LanguageInfoLabel");
-		_languageSample = GetNode<CodeEdit>("LanguageSample");
-		_startGameButton = GetParent<Button>();
-		_syntaxHighlighter = _languageSample.SyntaxHighlighter;
-		PopulateLanguageOptions();
-	}
+		private Label _languageInfoLabel;
+		private CodeEdit _languageSample;
+		private Button _startGameButton;
+		private SyntaxHighlighter _syntaxHighlighter;
 
-	public override void _Input(InputEvent @event)
-	{
-		if(Selected == 0)
+		public override void _Ready()
 		{
-			return;
+			_languageInfoLabel = GetNode<Label>("LanguageInfoLabel");
+			_languageSample = GetNode<CodeEdit>("LanguageSample");
+			_startGameButton = GetParent<Button>();
+			_syntaxHighlighter = _languageSample.SyntaxHighlighter;
+			PopulateLanguageOptions();
 		}
 
-		_languageInfoLabel.Text = Selected switch
+		public override void _Input(InputEvent @event)
 		{
-			> 0 => LanguageConstants.LanguagesWithDescriptions[(Language)Selected - 1],
-			_ => "Information about your language selection will show up here, once you've made a choice."
-		};
+			if (Selected == 0)
+			{
+				return;
+			}
 
-		_languageSample.Text = Selected switch
-		{
-			> 0 => LanguageConstants.LanguageExamples[(Language)Selected - 1],
-			_ => string.Empty
-		};
+			_languageInfoLabel.Text = Selected switch
+			{
+				> 0 => LanguageConstants.LanguagesWithDescriptions[(Language)Selected - 1],
+				_ => "Information about your language selection will show up here, once you've made a choice."
+			};
 
-		_languageSample.SyntaxHighlighter = Selected switch
-		{
-			> 0 => CodeHighlightingConstants.LanguageCodeHighlighters[(Language)Selected - 1],
-			_ => null
-		};
+			_languageSample.Text = Selected switch
+			{
+				> 0 => LanguageConstants.LanguageExamples[(Language)Selected - 1],
+				_ => string.Empty
+			};
 
-		_languageSample.Visible = true;
-		_startGameButton.Disabled = false;
-	}
+			_languageSample.SyntaxHighlighter = Selected switch
+			{
+				> 0 => CodeHighlightingConstants.LanguageCodeHighlighters[(Language)Selected - 1],
+				_ => null
+			};
 
-	private void PopulateLanguageOptions()
-	{
-		var _counter = 0;
-		AddItem("Select language...", _counter);
-
-		foreach (var language in LanguageConstants.LanguagesWithDescriptions.Keys)
-		{
-			AddItem(Enum.GetName(language), _counter++);
+			_languageSample.Visible = true;
+			_startGameButton.Disabled = false;
 		}
 
-		SetItemDisabled(0, true);
-		Select(0);
+		private void PopulateLanguageOptions()
+		{
+			var _counter = 0;
+			AddItem("Select language...", _counter);
+
+			foreach (var language in LanguageConstants.LanguagesWithDescriptions.Keys)
+			{
+				AddItem(Enum.GetName(language), _counter++);
+			}
+
+			SetItemDisabled(0, true);
+			Select(0);
+		}
 	}
 }

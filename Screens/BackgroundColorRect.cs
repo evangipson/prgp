@@ -2,48 +2,51 @@ using Godot;
 
 using PRPG.Singletons;
 
-public partial class BackgroundColorRect : ColorRect
+namespace PRPG.Screens
 {
-	private int _ticks = 0;
-	private float _elapsedLerpTime = 0.0f;
-	private Color _baseColor;
-	private Color _variantColor;
-
-	[Export]
-	private float _lerpSeconds = 3.0f;
-
-	public override void _Ready()
+	public partial class BackgroundColorRect : ColorRect
 	{
-		SetNewColor();
-	}
+		private int _ticks = 0;
+		private float _elapsedLerpTime = 0.0f;
+		private Color _baseColor;
+		private Color _variantColor;
 
-	public override void _Process(double delta)
-	{
-		_elapsedLerpTime += (float)delta;
-		UpdateColorRect();
-	}
+		[Export]
+		private float _lerpSeconds = 3.0f;
 
-	private void UpdateColorRect()
-	{
-		if (_elapsedLerpTime < _lerpSeconds)
+		public override void _Ready()
 		{
-			Color = ColorService.Lerp(_baseColor, _variantColor, _elapsedLerpTime / _lerpSeconds);
-			return;
+			SetNewColor();
 		}
 
-		_elapsedLerpTime = 0;
-		SetNewColor();
-	}
-
-	private void SetNewColor()
-	{
-		_baseColor = Color;
-		_variantColor = new()
+		public override void _Process(double delta)
 		{
-			R = ColorService.GetColorVariant(Color.R, 0.05f),
-			G = ColorService.GetColorVariant(Color.G, 0.05f),
-			B = ColorService.GetColorVariant(Color.B, 0.05f),
-			A = 1
-		};
+			_elapsedLerpTime += (float)delta;
+			UpdateColorRect();
+		}
+
+		private void UpdateColorRect()
+		{
+			if (_elapsedLerpTime < _lerpSeconds)
+			{
+				Color = ColorService.Lerp(_baseColor, _variantColor, _elapsedLerpTime / _lerpSeconds);
+				return;
+			}
+
+			_elapsedLerpTime = 0;
+			SetNewColor();
+		}
+
+		private void SetNewColor()
+		{
+			_baseColor = Color;
+			_variantColor = new()
+			{
+				R = ColorService.GetColorVariant(Color.R, 0.05f),
+				G = ColorService.GetColorVariant(Color.G, 0.05f),
+				B = ColorService.GetColorVariant(Color.B, 0.05f),
+				A = 1
+			};
+		}
 	}
 }

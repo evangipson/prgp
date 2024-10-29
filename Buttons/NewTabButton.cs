@@ -1,16 +1,19 @@
 using Godot;
 
-public partial class NewTabButton : Button
+namespace PRPG.Buttons
 {
-	private Panel _newTabModalBackdropPanel;
-
-	public override void _Ready()
+	public partial class NewTabButton : Button
 	{
-		_newTabModalBackdropPanel = GetParent().GetNode<Panel>("NewTabModalBackdropPanel");
-	}
+		private Panel _newTabModalBackdropPanel;
 
-	public override void _Pressed()
-	{
-		_newTabModalBackdropPanel.Visible = true;
+		public override void _Ready()
+		{
+			_newTabModalBackdropPanel = GetParent().GetNode<Panel>("NewTabModalBackdropPanel");
+		}
+
+		public override void _Pressed()
+		{
+			_newTabModalBackdropPanel.Visible = true;
+		}
 	}
 }
